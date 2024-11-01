@@ -14,7 +14,7 @@ a{
     color: #3c3e41;
     text-decoration: none;
 }
-html,body{
+body{
     margin: 0;
     background-color: var(--light);
     color: var(--color-text);
