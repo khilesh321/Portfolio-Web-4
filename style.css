@@ -52,6 +52,12 @@ header ul{
 header ul li{
     padding: 0 30px;
 }
+
+h1 span{
+    background: var(--gradient-bg);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .container{
     position: relative;
     width: 1200px;
@@ -74,10 +80,15 @@ header ul li{
     margin: 0;
 }
 .gradientText{
-  display: inline-block;
-    background: var(--gradient-bg);
+    font-size: 2em;
+    font-weight: 700;
+    margin-left: 25%;
+    /* background-color: crimson; */
+    display: inline-block;
+    color: rgb(7, 79, 7);
+    /* background: var(--gradient-bg);
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 .job{
    display: inline-block;
@@ -402,6 +413,16 @@ html.lenis::-webkit-scrollbar, body.lenis::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Edge */
 }
 
+.highlight-projects{
+    width: 100%;
+    height: 100vh;
+    transition: cubic-bezier(0.19, 1, 0.22, 1);
+}
+.highlight-projects img{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+  }
 
 
 
