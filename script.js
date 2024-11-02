@@ -81,7 +81,7 @@ if (!isMobileDevice()) {
   
     // Loop through each class name and apply the Shery image effect
     imageClasses.forEach((className) => {
-      Shery.imageEffect(`.listProject .item .${className} img`, { // Fixed selector to target img elements
+      Shery.imageEffect(`.listProject .item .${className}`, { // Fixed selector to target img elements
         style: 3,
         config: {
           a: { value: 1.05, range: [0, 30] }, // Minimal zoom
