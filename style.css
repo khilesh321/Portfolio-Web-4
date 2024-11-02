@@ -89,6 +89,10 @@ header ul li {
 header ul li a{
     font-size: 1.1rem;
 }
+header ul li{
+    max-width: 70%;
+}
+
 
 h1 span{
     background: var(--gradient-bg);
