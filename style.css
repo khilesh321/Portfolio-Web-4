@@ -99,7 +99,6 @@ h1 span{
 }
 
 .page4 h1 {
-    font-size: 36px;
     margin-bottom: 20px;
 }
 
@@ -201,7 +200,12 @@ header .nav label,
 header input{
     display: none;
 }
+
+.navDiv label i{
+    font-size: 1rem;
+}
 .title{
+    font-size: 3rem;
     text-align: center;
     padding-top: 25px;
 }
@@ -230,7 +234,7 @@ header input{
 }
 .listProject{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     border-bottom: 1px solid #dce1e4;
     padding-bottom: 50px;
@@ -239,20 +243,23 @@ header input{
     text-align: center;
     box-shadow: var(--box-shadow);
     padding: 20px;
-}
-.listProject .item img{
-    width: 90%;
-    border-radius: 20px;
-}
-.listProject .item{
     text-align: center;
     border-radius: 10px;
     font-weight: bold;
     font-size: large;
 }
+.listProject .item img{
+    width: 90%;
+    border-radius: 20px;
+}
 
-.listSkill .item div{
-    font-size: 1.3rem;
+.listProject .item .sub-name{
+    /* text-wrap: nowrap; */
+    font-size: 0.7em;
+}
+
+.listSkill .item .name{
+    font-size: 1rem;
 }
 
 footer{
@@ -273,6 +280,7 @@ footer{
 .contact i{
     width: 50px;
     height: 50px;
+    font-size: 1rem;
     margin: 20px;
     box-shadow: var(--box-shadow);
     display: flex;
@@ -458,17 +466,6 @@ html.lenis::-webkit-scrollbar, body.lenis::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Edge */
 }
 
-.highlight-projects{
-    width: 100%;
-    height: 100vh;
-    transition: cubic-bezier(0.19, 1, 0.22, 1);
-}
-.highlight-projects img{
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-  }
-
 
 
 /* Desktops and laptops ----------- */
@@ -495,6 +492,9 @@ html.lenis::-webkit-scrollbar, body.lenis::-webkit-scrollbar {
 
 @media screen and (max-width: 767px){
 
+    .title{
+        font-size: 1.7rem;
+    }
     #contact {
         display: none;
     }
@@ -555,6 +555,10 @@ html.lenis::-webkit-scrollbar, body.lenis::-webkit-scrollbar {
         border-radius: 50%;
         color: red;
     }
+    header .nav label i{
+        font-size: 1rem;
+    }
+
     .banner .content{
         padding-right: 0px;
     }
@@ -576,9 +580,6 @@ html.lenis::-webkit-scrollbar, body.lenis::-webkit-scrollbar {
         display: block;
     }
 
-    .highlight-projects{
-        height: 100%;
-    }
 
     header .logo img{
         height: 2.5rem;
