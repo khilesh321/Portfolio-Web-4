@@ -321,7 +321,6 @@ footer{
     font-weight: 700;
 }
 .ri-graduation-cap-fill {
-    font-size: 7em;
     font-variation-settings:
     'FILL' 0,
     'wght' 400,
@@ -329,6 +328,13 @@ footer{
     'opsz' 30;  
   }
   
+  .block i{
+    font-size: 7em;
+  }
+  .block p{
+    font-size: 1.4em;
+  }
+
   .blocks-wrapper{
     position: relative;
   
