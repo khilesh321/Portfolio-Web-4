@@ -76,32 +76,44 @@ if (!isMobileDevice()) {
     duration: 1,
   });
   document.addEventListener("DOMContentLoaded", function () {
+    // Apply the image effect
     Shery.imageEffect(".listProject .item img", {
       style: 3,
       config: {
-        a: { value: 1.05, range: [0, 30] }, // Reduced 'a' for minimal zoom
-        b: { value: -0.3, range: [-1, 1] }, // Further adjusted 'b' for subtlety
-        aspect: { value: 1.3 }, // Adjusted for a softer effect
+        a: { value: 1.05, range: [0, 30] }, // Minimal zoom
+        b: { value: -0.3, range: [-1, 1] }, // Subtle adjustment
+        aspect: { value: 1.3 }, // Softer aspect ratio
         gooey: { value: true },
         infiniteGooey: { value: true },
-        durationOut: { value: 0.6, range: [0.1, 5] }, // Faster transition out
-        durationIn: { value: 0.6, range: [0.1, 5] }, // Faster transition in
-        displaceAmount: { value: 0.2 }, // Significantly reduced displacement
+        durationOut: { value: 0.8, range: [0.1, 5] }, // Slightly longer transition out
+        durationIn: { value: 0.8, range: [0.1, 5] }, // Slightly longer transition in
+        displaceAmount: { value: 0.1 }, // Further reduced displacement
         masker: { value: true },
-        maskVal: { value: 1.2, range: [1, 5] }, // Reduced mask value for subtler effect
+        maskVal: { value: 1.0, range: [1, 5] }, // Softer mask value
         scrollType: { value: 0 },
         geoVertex: { range: [1, 64], value: 1 },
         noEffectGooey: { value: false },
         onMouse: { value: 0 },
-        noise_speed: { value: 0.5, range: [0, 10] }, // Slower noise speed
-        metaball: { value: 0.1, range: [0, 2] }, // Very low metaball intensity
-        discard_threshold: { value: 0.8, range: [0, 1] }, // Higher discard threshold
+        noise_speed: { value: 0.3, range: [0, 10] }, // Even slower noise speed
+        metaball: { value: 0.05, range: [0, 2] }, // Very subtle metaball effect
+        discard_threshold: { value: 0.9, range: [0, 1] }, // Higher discard threshold
         antialias_threshold: { value: 0, range: [0, 0.1] },
-        noise_height: { value: 0.1, range: [0, 2] }, // Lower noise height
-        noise_scale: { value: 5, range: [0, 100] }, // Reduced noise scale
+        noise_height: { value: 0.05, range: [0, 2] }, // Minimal noise height
+        noise_scale: { value: 3, range: [0, 100] }, // Very low noise scale
       },
     });
+  
+    // Add a fallback mechanism
+    const images = document.querySelectorAll(".listProject .item img");
+    images.forEach((img) => {
+      img.addEventListener("error", function () {
+        // Remove the effect and show the original image if an error occurs
+        img.style.filter = "none";
+        img.style.backgroundColor = "transparent";
+      });
+    });
   });
+  
 
   Shery.imageEffect(".page4 .container div", {
     style: 5,
