@@ -14,6 +14,19 @@ a{
     color: #3c3e41;
     text-decoration: none;
 }
+
+.preloader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDWMNAES25yAVBkIDFFL6zBD23OVERbd0CMw&s);
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 99;
+}
+
+
 body{
     padding: 0;
     margin: 0;

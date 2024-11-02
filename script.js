@@ -1,16 +1,24 @@
-// Initialize Lenis
-const lenis = new Lenis({
-  syncTouch: true,
-  // other configurations
-});
+function lenisScroll(){
+  // Initialize Lenis
+  const lenis = new Lenis({
+    syncTouch: true,
+    // other configurations
+  });
 
-// Use requestAnimationFrame to continuously update the scroll
-function raf(time) {
-  lenis.raf(time);
+  // Use requestAnimationFrame to continuously update the scroll
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
   requestAnimationFrame(raf);
 }
 
-requestAnimationFrame(raf);
+lenisScroll();
+
+function hidePreloader(){
+  document.querySelector('.preloader').style.display = 'none';
+}
 
 // restriction
 function restrict() {
