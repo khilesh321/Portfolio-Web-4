@@ -19,8 +19,9 @@ a{
     position: fixed;
     width: 100%;
     height: 100vh;
-    background-color: #1F2A44;
-    background-image: url(assets\Bird-Loader.webp);
+    border: 0;
+    background-color: #18233E;
+    background-image: url(https://cdn.cssauthor.com/wp-content/uploads/2018/06/Bird-Loader.gif?strip=all&lossy=1&resize=800%2C600&ssl=1);
     background-repeat: no-repeat;
     background-position: center;
     z-index: 99;
