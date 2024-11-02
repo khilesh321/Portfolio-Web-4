@@ -16,6 +16,8 @@ function lenisScroll(){
 
 lenisScroll();
 
+window.onload = hidePreloader();
+
 function hidePreloader(){
   document.querySelector('.preloader').style.display = 'none';
 }
