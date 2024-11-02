@@ -15,11 +15,12 @@ a{
     text-decoration: none;
 }
 body{
+    padding: 0;
     margin: 0;
     background-color: var(--light);
     color: var(--color-text);
     font-family: 'Poppins', sans-serif;
-    font-size: 15px;
+    font-size: 1vw;
 }
 
 #home{
@@ -31,15 +32,21 @@ header{
     position: sticky;
     top: 0;
     width: calc(100% - 20px);
-    padding: 10px;
+    padding: 5px 10px;
     border-bottom: 1px solid #dce1e4;
     display: grid;
     grid-template-columns: 30% 70%;
     background-color: var(--light);
     z-index: 2;
 }
+
+header .logo{
+    display: flex;
+    align-items: center;
+}
+
 header .logo img{
-    height: 50px;
+    height: 4rem;
 }
 header ul{
     margin: 0;
@@ -58,104 +65,89 @@ h1 span{
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+/* page 1 */
+
+.page1{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 18em;
+    align-items: center;
+    margin: 5em 0 7em 0;
+}
+
+.page1 .left{
+    font-size: 2.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+.page1 .left .name h1{
+    font-size: 2.2em;
+    line-height: 1.2;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 900;
+}
+.page1 .left .name h1, .page1 .left h5, .page1 .left h4{
+    margin: 0;
+    padding: 0;
+}
+
+.page1 .left h4{
+    color: #1fc667;
+}
+
+.page1 .right img{
+    height: 30em;
+    border-radius: 2em;
+}
+.page1 .right{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page1 .right::before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    /* background-color: crimson; */
+    box-shadow: 1em 1em 3em rgb(159, 159, 159), -1em -1em 3em rgb(159, 159, 159);
+    border-radius: 2em;
+    width: 110%;
+    height: 110%;
+    z-index: -1;
+}
 .container{
     position: relative;
     width: 1200px;
     max-width: 90%;
     margin: auto;
 }
-.banner{
-    margin-top: 100px;
-    display: grid;
-    grid-template-columns: 60% 40%;
-    border-bottom: 1px solid #dce1e4;
-    padding-bottom: 50px;
+/* typing text Cursor animation */
+.typewrite {
+  font-size: 1em;
+  text-decoration: none;
+  color: #1fc667;
 }
-.banner .content{
-    text-align: justify;
-    padding-right: 50px;
+
+.blink-border {
+  border-right: 0.12em solid gray;
+  padding-right: 0.1em;
+  animation: blink 0.8s steps(2, start) infinite;
+  visibility: hidden;
 }
-.banner .content h1{
-    font-size: 4.5em;
-    margin: 0;
+
+@keyframes blink {
+  50% {
+      border-color: transparent;
+  }
 }
-.gradientText{
-    font-size: 2em;
-    font-weight: 700;
-    background-color: crimson;
-    display: inline-block;
-    color: rgb(7, 79, 7);
-    /* background: var(--gradient-bg);
-  background-clip: text;
-  -webkit-text-fill-color: transparent; */
-}
-.job{
-   display: inline-block;
-}
-.job::before{
-    content: attr(data-job1);
-    overflow: hidden;
-    display: inline-flex;
-    animation: effectText 1s linear infinite alternate,
-    changeText 4s linear infinite;
-}
-@keyframes effectText{
-    from{
-        max-width: 0;
-    }to{
-        max-width: 500px;
-    }
-}
-@keyframes changeText{
-    from{
-        content: attr(data-job1);
-    }
-    to{
-        content: attr(data-job2);
-    }
-}
-.find{
-    margin-top: 50px;
-}
-.find ul{
-    padding: 0;
-    list-style: none;
-    display: flex;
-}
-.find ul li{
-    width: 50px;
-    height: 50px;
-    box-shadow: var(--box-shadow);
-    margin: 10px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.find ul li:hover{
-    color: #fff;
-    background-image: var(--gradient-bg);
-}
-.banner .avatar{
-    position: relative;
-    height: max-content;
-    text-align: center;
-}
-.banner .avatar::before{
-    position: absolute;
-    width: 90%;
-    height: 80%;
-    content: '';
-    z-index: -1;
-    bottom: 0;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow);
-}
-.banner img{
-    width: 90%;
-}
+/*  */
 header .navDiv,
 header .nav label,
 header input{
@@ -485,6 +477,7 @@ html.lenis::-webkit-scrollbar, body.lenis::-webkit-scrollbar {
         position: fixed;
         background-color: #F0F3F5;
         z-index: 1;
+        box-shadow: 1px 0 16px rgb(114, 114, 114) ;
         width: 70%;
         height: 100vh;
         left: 0;
@@ -492,7 +485,7 @@ html.lenis::-webkit-scrollbar, body.lenis::-webkit-scrollbar {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: repeat(5, 70px);
-        transform: translateX(-100%);
+        transform: translateX(-120%);
         transition: 0.5s;
     }
     input#menu:checked ~ .nav{
@@ -531,6 +524,10 @@ html.lenis::-webkit-scrollbar, body.lenis::-webkit-scrollbar {
 
     .highlight-projects{
         height: 100%;
+    }
+
+    header .logo img{
+        height: 2.5rem;
     }
     
 }
