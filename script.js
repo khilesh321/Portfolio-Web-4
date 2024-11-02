@@ -81,33 +81,36 @@ if (!isMobileDevice()) {
   
     // Loop through each class name and apply the Shery image effect
     imageClasses.forEach((className) => {
-      Shery.imageEffect(`.listProject .item .${className}`, { // Fixed selector to target img elements
+      Shery.imageEffect(`.listProject .item .${className}`, {
         style: 3,
         config: {
-          a: { value: 1.05, range: [0, 30] }, // Minimal zoom
-          b: { value: -0.3, range: [-1, 1] }, // Subtle adjustment
+          a: { value: 1.05, range: [0, 30] }, // Initial subtle zoom effect
+          b: { value: -0.3, range: [-1, 1] }, // Subtle distortion
           aspect: { value: 1.3 }, // Softer aspect ratio
           gooey: { value: true },
           infiniteGooey: { value: true },
-          durationOut: { value: 0.8, range: [0.1, 5] }, // Slightly longer transition out
-          durationIn: { value: 0.8, range: [0.1, 5] }, // Slightly longer transition in
-          displaceAmount: { value: 0.1 }, // Further reduced displacement
+          durationOut: { value: 0.6, range: [0.1, 5] }, // Quick transition out
+          durationIn: { value: 0.6, range: [0.1, 5] }, // Quick transition in
+          displaceAmount: { value: 0.2 }, // Subtle initial displacement
           masker: { value: true },
-          maskVal: { value: 1.0, range: [1, 5] }, // Softer mask value
+          maskVal: { value: 1.2, range: [1, 5] }, // Subtle masking effect
           scrollType: { value: 0 },
           geoVertex: { range: [1, 64], value: 1 },
           noEffectGooey: { value: false },
-          onMouse: { value: 0 },
-          noise_speed: { value: 0.3, range: [0, 10] }, // Even slower noise speed
-          metaball: { value: 0.05, range: [0, 2] }, // Very subtle metaball effect
-          discard_threshold: { value: 0.9, range: [0, 1] }, // Higher discard threshold
+          onMouse: { value: 0 }, // Activate effect on mouse hover
+          noise_speed: { value: 0.5, range: [0, 10] }, // Moderate noise speed
+          metaball: { value: 0.1, range: [0, 2] }, // Subtle metaball effect
+          discard_threshold: { value: 0.8, range: [0, 1] }, // Higher discard threshold
           antialias_threshold: { value: 0, range: [0, 0.1] },
-          noise_height: { value: 0.05, range: [0, 2] }, // Minimal noise height
-          noise_scale: { value: 3, range: [0, 100] }, // Very low noise scale
+          noise_height: { value: 0.1, range: [0, 2] }, // Minimal noise height
+          noise_scale: { value: 5, range: [0, 100] }, // Reduced noise scale for subtlety
+          zoomFactor: { value: 1.1 }, // Added custom zoom factor for hover effect
         },
       });
     });
   });
+  
+  
   
   
 
