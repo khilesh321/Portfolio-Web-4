@@ -20,7 +20,29 @@ function hidePreloader(){
   document.querySelector('.preloader').style.display = 'none';
 }
 
-// restriction
+function cardsRedirect(){
+  const collegeCard = document.querySelector("#college-card");
+    collegeCard.addEventListener('click', function() {  
+    window.open('https://geca.ac.in', '_blank');
+  });
+
+  const whatsappCard = document.querySelector("#whatsapp-card");
+    whatsappCard.addEventListener('click', function() {  
+    window.open('https://www.whatsapp.com/channel/0029VafMvZxCnA7qAQpsh83N', '_blank');
+  });
+
+  const telegramCard = document.querySelector("#telegram-card");
+    telegramCard.addEventListener('click', function() {  
+    window.open('https://telegram.me/Khilesh_jawale', '_blank');
+  });
+
+  const emailCard = document.querySelector("#email-card");
+    emailCard.addEventListener('click', function() {  
+    window.open('mailto:khilujawale321@gmail.com', '_blank');
+  });
+}
+cardsRedirect();
+
 function restrict() {
   // for disable right click
   document.addEventListener("contextmenu", (event) => event.preventDefault());
@@ -66,11 +88,10 @@ function restrict() {
     e.preventDefault();
   });
 }
+restrict();
 
-// restrict();
 
 // shery
-
 // Function to detect if the user is on a mobile device
 function isMobileDevice() {
   return /Mobi|Android/i.test(navigator.userAgent);
@@ -205,7 +226,7 @@ if (!isMobileDevice()) {
 }
 
 // cursor effect
-var TxtType = function (el, toRotate, period) {
+let TxtType = function (el, toRotate, period) {
   this.toRotate = toRotate;
   this.el = el;
   this.loopNum = 0;
