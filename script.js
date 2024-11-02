@@ -81,7 +81,7 @@ if (!isMobileDevice()) {
   
     // Loop through each class name and apply the Shery image effect
     imageClasses.forEach((className) => {
-      Shery.imageEffect(`.listProject .item .${className}`, {
+      Shery.imageEffect(`.listProject .item .${className} img`, { // Fixed selector to target img elements
         style: 3,
         config: {
           a: { value: 1.05, range: [0, 30] }, // Minimal zoom
@@ -109,17 +109,6 @@ if (!isMobileDevice()) {
     });
   });
   
-  
-    // Add a fallback mechanism
-    const images = document.querySelectorAll(".listProject .item img");
-    images.forEach((img) => {
-      img.addEventListener("error", function () {
-        // Remove the effect and show the original image if an error occurs
-        img.style.filter = "none";
-        img.style.backgroundColor = "transparent";
-      });
-    });
-  });
   
 
   Shery.imageEffect(".page4 .container div", {
