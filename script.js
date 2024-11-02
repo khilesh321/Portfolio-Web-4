@@ -16,8 +16,6 @@ function lenisScroll(){
 
 lenisScroll();
 
-window.onload = hidePreloader();
-
 function hidePreloader(){
   document.querySelector('.preloader').style.display = 'none';
 }
@@ -88,37 +86,69 @@ if (!isMobileDevice()) {
   document.addEventListener("DOMContentLoaded", function () {
     // Array of class names for your images
     const imageClasses = ["p1", "p2", "p3", "p4"];
+    
+    // Collect all images into an array
+    const images = imageClasses.map(className => 
+      document.querySelector(`.listProject .item .${className}`)
+    ).filter(img => img !== null); // Filter out any null elements in case some images are missing
   
-    // Loop through each class name and apply the Shery image effect
-    imageClasses.forEach((className) => {
-      Shery.imageEffect(`.listProject .item .${className}`, {
-        style: 3,
-        config: {
-          a: { value: 1.05, range: [0, 30] }, // Initial subtle zoom effect
-          b: { value: -0.3, range: [-1, 1] }, // Subtle distortion
-          aspect: { value: 1.3 }, // Softer aspect ratio
-          gooey: { value: true },
-          infiniteGooey: { value: true },
-          durationOut: { value: 0.6, range: [0.1, 5] }, // Quick transition out
-          durationIn: { value: 0.6, range: [0.1, 5] }, // Quick transition in
-          displaceAmount: { value: 0.2 }, // Subtle initial displacement
-          masker: { value: true },
-          maskVal: { value: 1.2, range: [1, 5] }, // Subtle masking effect
-          scrollType: { value: 0 },
-          geoVertex: { range: [1, 64], value: 1 },
-          noEffectGooey: { value: false },
-          onMouse: { value: 0 }, // Activate effect on mouse hover
-          noise_speed: { value: 0.5, range: [0, 10] }, // Moderate noise speed
-          metaball: { value: 0.1, range: [0, 2] }, // Subtle metaball effect
-          discard_threshold: { value: 0.8, range: [0, 1] }, // Higher discard threshold
-          antialias_threshold: { value: 0, range: [0, 0.1] },
-          noise_height: { value: 0.1, range: [0, 2] }, // Minimal noise height
-          noise_scale: { value: 5, range: [0, 100] }, // Reduced noise scale for subtlety
-          zoomFactor: { value: 1.1 }, // Added custom zoom factor for hover effect
-        },
+    // Function to apply Shery.js effect once all images are loaded
+    function applySheryEffect() {
+      imageClasses.forEach((className) => {
+        Shery.imageEffect(`.listProject .item .${className}`, {
+          style: 3,
+          config: {
+            a: { value: 1.05, range: [0, 30] }, // Initial subtle zoom effect
+            b: { value: -0.3, range: [-1, 1] }, // Subtle distortion
+            aspect: { value: 1.3 }, // Softer aspect ratio
+            gooey: { value: true },
+            infiniteGooey: { value: true },
+            durationOut: { value: 0.6, range: [0.1, 5] }, // Quick transition out
+            durationIn: { value: 0.6, range: [0.1, 5] }, // Quick transition in
+            displaceAmount: { value: 0.2 }, // Subtle initial displacement
+            masker: { value: true },
+            maskVal: { value: 1.2, range: [1, 5] }, // Subtle masking effect
+            scrollType: { value: 0 },
+            geoVertex: { range: [1, 64], value: 1 },
+            noEffectGooey: { value: false },
+            onMouse: { value: 0 }, // Activate effect on mouse hover
+            noise_speed: { value: 0.5, range: [0, 10] }, // Moderate noise speed
+            metaball: { value: 0.1, range: [0, 2] }, // Subtle metaball effect
+            discard_threshold: { value: 0.8, range: [0, 1] }, // Higher discard threshold
+            antialias_threshold: { value: 0, range: [0, 0.1] },
+            noise_height: { value: 0.1, range: [0, 2] }, // Minimal noise height
+            noise_scale: { value: 5, range: [0, 100] }, // Reduced noise scale for subtlety
+            zoomFactor: { value: 1.1 }, // Added custom zoom factor for hover effect
+          },
+        });
       });
+    }
+  
+    // Counter to track loaded images
+    let loadedImagesCount = 0;
+    
+    // Wait for all images to load
+    images.forEach(image => {
+      if (image.complete) {
+        // If image is already loaded (from cache), increment the count
+        loadedImagesCount++;
+      } else {
+        // Add load event listener for images that are still loading
+        image.addEventListener("load", () => {
+          loadedImagesCount++;
+          if (loadedImagesCount === images.length) {
+            applySheryEffect();
+          }
+        });
+      }
     });
+  
+    // If all images were already loaded from cache, apply the effect immediately
+    if (loadedImagesCount === images.length) {
+      applySheryEffect();
+    }
   });
+  
   
   
   
