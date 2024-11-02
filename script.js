@@ -1,5 +1,8 @@
 // Initialize Lenis
-const lenis = new Lenis();
+const lenis = new Lenis({
+  syncTouch: true,
+  // other configurations
+});
 
 
 // Use requestAnimationFrame to continuously update the scroll
@@ -8,7 +11,7 @@ function raf(time) {
   requestAnimationFrame(raf);
 }
 
-raf();
+requestAnimationFrame(raf);
 
 // restriction
 function restrict(){
@@ -71,10 +74,27 @@ Shery.imageEffect(".highlight-projects", {
 
 });
 
-Shery.mouseFollower({
-  skew: true,
-  ease: "cubic-bezier(0.23, 1, 0.320, 1)",
-  duration: 1,
+// Function to detect if the user is on a mobile device
+function isMobileDevice() {
+  return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+// Apply mouse follower only if the user is not on a mobile device
+if (!isMobileDevice()) {
+  Shery.mouseFollower({
+    skew: true,
+    ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+    duration: 1,
+  });
+}
+
+
+// for removing the mouse follower
+Shery.imageMasker(".find ul li" /* Element to target.*/, {
+  mouseFollower: false,
+  text: "",
+  ease: "ease-in-out",
+  duration: 0.1,
 });
 
 // for removing the mouse follower
