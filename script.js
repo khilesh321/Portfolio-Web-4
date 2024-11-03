@@ -28,7 +28,7 @@ function hidePreloader(){
         heading.classList.add('focus-in-expand');
       });
     }
-  },700);
+  },1000);
 }
 hidePreloader();
 
