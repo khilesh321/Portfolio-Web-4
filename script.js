@@ -17,20 +17,36 @@ function lenisScroll() {
 lenisScroll();
 
 function hidePreloader() {
-  setTimeout(() => {
-    window.onload = hidePreloader2();
-    function hidePreloader2() {
-      document.querySelector('.preloader').style.display = 'none';
+  window.addEventListener('load', () => {
+    // After 2.9 seconds, call cursorEffect() and gsapAnim()
+    setTimeout(() => {
       cursorEffect();
       gsapAnim();
       const nameHeadings = document.querySelectorAll('.pname h1');
-      nameHeadings.forEach(heading => {
-        heading.classList.add('focus-in-expand');
+          nameHeadings.forEach(heading => {
+            heading.classList.add('focus-in-expand');
+          });
+    }, 1000); // 2.9 seconds after window load
+
+    // After 3 seconds, fade out the preloader
+    setTimeout(() => {
+      const preloader = document.querySelector('.preloader');
+
+      // Use GSAP to animate the opacity to 0
+      gsap.to(preloader, {
+        opacity: 0,
+        duration: 1, // Duration of the fade-out animation
+        ease: "power2.out",
+        onComplete: () => {
+          preloader.style.display = 'none';
+
+        },
       });
-    }
-  }, 1000);
+    }, 1000); // 3 seconds after window load
+  });
 }
 hidePreloader();
+
 
 function nameAnimation() {
   const observer = new IntersectionObserver((entries) => {

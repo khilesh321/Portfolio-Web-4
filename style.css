@@ -24,6 +24,7 @@ a{
     background-image: url(https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExbzBvbm50aG40YmEyZHNpaWd2ZDYyZDFlc2NqNHVwZDlqeWxpb3Y2eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/eZVVjyjayVNJIXqKLU/giphy.gif);
     background-repeat: no-repeat;
     background-position: center;
+    /* transition: 1s ease; */
     z-index: 99;
 }
 
