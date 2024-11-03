@@ -23,10 +23,37 @@ function hidePreloader(){
       document.querySelector('.preloader').style.display = 'none';
       cursorEffect();
       gsapAnim();
+      const nameHeadings = document.querySelectorAll('.name h1');
+      nameHeadings.forEach(heading => {
+        heading.classList.add('focus-in-expand');
+      });
     }
   },700);
 }
 hidePreloader();
+
+function nameAnimation(){
+  document.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add the animation class when the element is in view
+                entry.target.classList.add('name-animation');
+            } else {
+                // Remove the animation class when the element goes out of view
+                entry.target.classList.remove('name-animation');
+            }
+        });
+    }, { threshold: 0.1 }); // Adjust threshold as needed
+  
+    // Select elements with classes .khilesh and .jawale
+    const animatedElements = document.querySelectorAll('.name');
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+  });
+}
+nameAnimation();
 
 function cardsRedirect(){
   const collegeCard = document.querySelector("#college-card");
@@ -293,12 +320,9 @@ function cursorEffect(){
   }
 }
 
-window.onload = function() {
-  const nameHeadings = document.querySelectorAll('.name h1');
-  nameHeadings.forEach(heading => {
-    heading.classList.add('focus-in-expand');
-  });
-};
+// window.onload = function() {
+
+// };
 
 // Hard Code Animation
 function hardCodeAnim(){
