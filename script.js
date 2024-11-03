@@ -16,10 +16,17 @@ function lenisScroll(){
 
 lenisScroll();
 
-window.onload = hidePreloader();
 function hidePreloader(){
-  document.querySelector('.preloader').style.display = 'none';
+  setTimeout(() => {
+    window.onload = hidePreloader2();
+    function hidePreloader2(){
+      document.querySelector('.preloader').style.display = 'none';
+      cursorEffect();
+      gsapAnim();
+    }
+  },700);
 }
+hidePreloader();
 
 function cardsRedirect(){
   const collegeCard = document.querySelector("#college-card");
@@ -92,7 +99,7 @@ function restrict() {
 restrict();
 
 
-// shery
+
 // Function to detect if the user is on a mobile device
 function isMobileDevice() {
   return /Mobi|Android/i.test(navigator.userAgent);
@@ -100,6 +107,7 @@ function isMobileDevice() {
 
 // Apply mouse follower only if the user is not on a mobile device
 if (!isMobileDevice()) {
+  // shery
   Shery.mouseFollower({
     skew: true,
     ease: "cubic-bezier(0.23, 1, 0.320, 1)",
@@ -216,74 +224,166 @@ if (!isMobileDevice()) {
     duration: 0.1,
   });
 
+  Shery.imageEffect(".eagle-img", {
+    style: 2,
+    config:{onMouse: { value: 1 }},
+  });
+}
+
+// cursor effect Animation
+function cursorEffect(){
+  let TxtType = function (el, toRotate, period) {
+    this.toRotate = toRotate;
+    this.el = el;
+    this.loopNum = 0;
+    this.period = parseInt(period, 10) || 2000;
+    this.txt = "";
+    this.tick();
+    this.isDeleting = false;
+  };
+
+  TxtType.prototype.tick = function () {
+    var i = this.loopNum % this.toRotate.length;
+    var fullTxt = this.toRotate[i];
+  
+    if (this.isDeleting) {
+      this.txt = fullTxt.substring(0, this.txt.length - 1);
+    } else {
+      this.txt = fullTxt.substring(0, this.txt.length + 1);
+    }
+  
+    this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
+  
+    var that = this;
+    var delta = 200 - Math.random() * 100;
+  
+    if (this.isDeleting) {
+      delta /= 2;
+    }
+  
+    if (!this.isDeleting && this.txt === fullTxt) {
+      delta = this.period;
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.txt === "") {
+      this.isDeleting = false;
+      this.loopNum++;
+      delta = 500;
+    }
+  
+    setTimeout(function () {
+      that.tick();
+    }, delta);
+  };
+  call1();
+  function call1() {
+    document.querySelector(".blink-border").style.visibility = "visible";
+    var elements = document.getElementsByClassName("typewrite");
+    for (var i = 0; i < elements.length; i++) {
+      var toRotate = elements[i].getAttribute("data-type");
+      var period = elements[i].getAttribute("data-period");
+      if (toRotate) {
+        new TxtType(elements[i], JSON.parse(toRotate), period);
+      }
+    }
+    // INJECT CSS
+    var css = document.createElement("style");
+    css.type = "text/css";
+    css.innerHTML = ".typewrite > .wrap { border-right: 0em solid gray}";
+    document.body.appendChild(css);
+  }
+}
+
+window.onload = function() {
+  const nameHeadings = document.querySelectorAll('.name h1');
+  nameHeadings.forEach(heading => {
+    heading.classList.add('focus-in-expand');
+  });
+};
+
+// Hard Code Animation
+function hardCodeAnim(){
+  document.addEventListener("DOMContentLoaded", function () {
+    // List of all animation class names
+    const animationClasses = ['.t-t-b', '.b-t-t','.focus-in-expand'];
+  
+    // Function to handle animation when element is in view
+    const handleAnimation = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    };
+  
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver(handleAnimation);
+  
+    // Loop through each animation class and observe each element
+    animationClasses.forEach(className => {
+      const elements = document.querySelectorAll(className);
+      elements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+  });
+}
+
+hardCodeAnim();
+
+// GSAP Animations
+function gsapAnim(){
+
+  // hello everyone my name is,
   Shery.textAnimate(".text-target", {
     style: 2,
     y: 10,
     delay: 0,
-    duration: 0.5,
+    duration: 0.1,
     ease: "cubic-bezier(0.23, 1, 0.320, 1)",
-    multiplier: 0,
+    multiplier: 0.1,
   });
-}
 
-// cursor effect
-let TxtType = function (el, toRotate, period) {
-  this.toRotate = toRotate;
-  this.el = el;
-  this.loopNum = 0;
-  this.period = parseInt(period, 10) || 2000;
-  this.txt = "";
-  this.tick();
-  this.isDeleting = false;
-};
+  // b-t-t           // '.name .khilesh',
+  gsap.utils.toArray(['.page2 .title', '.page3 .title', '.page4 .title', '.page5 .title']).forEach(element => {
+    gsap.from(element, {
+      y: 40,
+      opacity: 0,
+      duration: 1.25,
+      ease: "expo.inOut",
+      scrollTrigger: {
+        trigger: element,
+        // start: "top 50%",
+        toggleActions: "play none none reset",
+      },
+    });
+  });
 
-TxtType.prototype.tick = function () {
-  var i = this.loopNum % this.toRotate.length;
-  var fullTxt = this.toRotate[i];
+    // zoom in
+    gsap.from('.eagle-img', {
+      scale: 0.9,
+      ease: "expo.inOut",
+      duration: 1.5,
+    });
 
-  if (this.isDeleting) {
-    this.txt = fullTxt.substring(0, this.txt.length - 1);
-  } else {
-    this.txt = fullTxt.substring(0, this.txt.length + 1);
+    // fade in
+    gsap.from('.fade-in', {
+      opacity: 0,
+      scale: 1.1,
+      duration: 2,
+      ease: "power2.out"
+    });
+
+    // skills progress bar
+    gsap.from('.evaluate',{
+      width:0,
+      stagger: .2,
+      scrollTrigger: {
+        trigger: '.evaluate',
+        toggleActions: "play none none reset",
+      }
+    })
+    
   }
 
-  this.el.innerHTML = '<span class="wrap">' + this.txt + "</span>";
-
-  var that = this;
-  var delta = 200 - Math.random() * 100;
-
-  if (this.isDeleting) {
-    delta /= 2;
-  }
-
-  if (!this.isDeleting && this.txt === fullTxt) {
-    delta = this.period;
-    this.isDeleting = true;
-  } else if (this.isDeleting && this.txt === "") {
-    this.isDeleting = false;
-    this.loopNum++;
-    delta = 500;
-  }
-
-  setTimeout(function () {
-    that.tick();
-  }, delta);
-};
-call1();
-function call1() {
-  document.querySelector(".blink-border").style.visibility = "visible";
-  var elements = document.getElementsByClassName("typewrite");
-  for (var i = 0; i < elements.length; i++) {
-    var toRotate = elements[i].getAttribute("data-type");
-    var period = elements[i].getAttribute("data-period");
-    if (toRotate) {
-      new TxtType(elements[i], JSON.parse(toRotate), period);
-    }
-  }
-  // INJECT CSS
-  var css = document.createElement("style");
-  css.type = "text/css";
-  css.innerHTML = ".typewrite > .wrap { border-right: 0em solid gray}";
-  document.body.appendChild(css);
-}
-// // //
