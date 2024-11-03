@@ -23,7 +23,7 @@ function hidePreloader(){
       document.querySelector('.preloader').style.display = 'none';
       cursorEffect();
       gsapAnim();
-      const nameHeadings = document.querySelectorAll('.name h1');
+      const nameHeadings = document.querySelectorAll('.pname h1');
       nameHeadings.forEach(heading => {
         heading.classList.add('focus-in-expand');
       });
@@ -47,7 +47,7 @@ function nameAnimation(){
     }, { threshold: 0.1 }); // Adjust threshold as needed
   
     // Select elements with classes .khilesh and .jawale
-    const animatedElements = document.querySelectorAll('.name');
+    const animatedElements = document.querySelectorAll('.pname');
     animatedElements.forEach(element => {
         observer.observe(element);
     });

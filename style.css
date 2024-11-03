@@ -145,13 +145,13 @@ h1 span{
     align-items: center;
     gap: 1em;
 }
-.page1 .left .name h1{
+.page1 .left .pname h1{
     font-size: 2.2em;
     line-height: 1.2;
     font-family: 'Segoe UI', sans-serif;
     font-weight: 900;
 }
-.page1 .left .name h1, .page1 .left h5, .page1 .left h4{
+.page1 .left .pname h1, .page1 .left h5, .page1 .left h4{
     margin: 0;
     padding: 0;
     text-wrap: nowrap;
