@@ -355,11 +355,12 @@ function gsapAnim() {
   });
 
   // b-t-t
-  gsap.utils.toArray(['.page2 .title', '.page3 .title', '.page4 .title', '.page5 .title']).forEach(element => {
+  gsap.utils.toArray(['.page2 .title', '.page3 .title', '.page4 .title', '.page5 .title','.app-block h1']).forEach(element => {
     gsap.from(element, {
       y: 40,
       opacity: 0,
-      duration: 1.25,
+      duration: .9,
+      delay : -.1,
       ease: "expo.inOut",
       scrollTrigger: {
         trigger: element,
@@ -392,5 +393,8 @@ function gsapAnim() {
       trigger: '.evaluate',
       toggleActions: "play none none reset",
     }
+
   });
+  // text animation l-t-r
+  // gsap.from()
 }
