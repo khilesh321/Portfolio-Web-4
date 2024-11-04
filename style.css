@@ -591,6 +591,11 @@ footer {
   border-radius: 2em;
   font-size: 2em;
   font-weight: 700;
+  transition: .25s ease-in-out;
+  &:hover{
+    color: #1d7b46;
+    scale: 1.05;
+  }
 }
 
 /* ANIMATION */
