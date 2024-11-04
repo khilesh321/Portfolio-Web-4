@@ -126,7 +126,11 @@ h1 span {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 20px;
+  padding: 2em 0;
+  border-radius: 1em;
+  box-shadow: var(--box-shadow);
 }
 
 .page4 .container img {

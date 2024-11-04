@@ -217,7 +217,7 @@ if (!isMobileDevice()) {
     }
 
     Shery.imageEffect(".page4 .container div", {
-      style: 5,
+      style: 4,
       config: {
         a: { value: 1.49, range: [0, 30] },
         b: { value: -0.98, range: [-1, 1] },
@@ -262,12 +262,19 @@ if (!isMobileDevice()) {
       config: { onMouse: { value: 1 } },
     });
 
+
     window.addEventListener('load', () => {
       Shery.imageEffect(".app-block .logo-img-wrapper .logo-img", {
         style: 1,
         config: { onMouse: { value: 1 } },
       });
     })
+
+    Shery.makeMagnet(".magnet-target" /* Element to target.*/, {
+      //Parameters are optional.
+      ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+      duration: 1,
+    });
   }
 }
 
