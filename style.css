@@ -9,6 +9,8 @@ html{
     5px 5px 15px #c1c8d3, 
     -5px -5px 15px #ffffff;
     --gradient-bg: linear-gradient(-45deg, #D000F7, #24BAE3);
+    --gradient-color: linear-gradient(to left, rgb(255, 0, 234), rgb(0, 51, 255));
+    --gradient-color-r: linear-gradient(to bottom, rgb(255, 0, 234), rgb(0, 51, 255));
 }
 a{
     color: #3c3e41;
@@ -124,6 +126,67 @@ h1 span{
 .page4 p {
     font-size: 18px;
     margin-top: 20px;
+}
+
+.app-showcase{
+  margin: 10em 0;
+  display: flex;
+  justify-content: center;
+  gap: 10em;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.app-block{
+  display: flex;
+  width: 25rem;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+}
+
+.app-block h1{
+  position: relative;
+  font-size: 3.5rem;
+  margin-bottom: 0;
+  text-align: center;
+  background: var(--gradient-color-r);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 800;
+  opacity: .9;
+}
+
+.app-block h1::before{
+  content: '';
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 115%;
+  height: 2px; /* Border thickness */
+  background: var(--gradient-color);
+}
+.app-block h1::after{
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 115%;
+  height: 2px; /* Border thickness */
+  background: var(--gradient-color);
+}
+.app-block h5{
+  font-size: 1.5rem;
+  text-align: center;
+}
+.app-block .logo-img, .app-block .download-btn{
+  width: 12rem;
+  border-radius: 1rem;
+}
+.app-block .cleaner-logo{
+  background-color: black;
 }
 /*  */
 
@@ -693,6 +756,23 @@ html.lenis::-webkit-scrollbar, body.lenis::-webkit-scrollbar {
 
     header .logo img{
         height: 2.5rem;
+    }
+
+    .app-showcase{
+      gap: 17em;
+    }
+    .app-block .logo-img, .app-block .download-btn{
+      width: 9rem;
+    }
+    .app-block h1{
+      font-size: 2.5rem;
+    }
+    .app-block h5{
+      font-size: 1rem;
+    }
+
+    .app-block{
+      width: 80%;
     }
     
 }
