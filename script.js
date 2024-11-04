@@ -262,10 +262,12 @@ if (!isMobileDevice()) {
       config: { onMouse: { value: 1 } },
     });
 
-    Shery.imageEffect(".app-block .logo-img-wrapper .logo-img", {
-      style: 1,
-      config: { onMouse: { value: 1 } },
-    });
+    window.addEventListener('load', () => {
+      Shery.imageEffect(".app-block .logo-img-wrapper .logo-img", {
+        style: 1,
+        config: { onMouse: { value: 1 } },
+      });
+    })
   }
 }
 
