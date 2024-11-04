@@ -261,6 +261,11 @@ if (!isMobileDevice()) {
       style: 1,
       config: { onMouse: { value: 1 } },
     });
+
+    Shery.imageEffect(".app-block .logo-img-wrapper .logo-img", {
+      style: 1,
+      config: { onMouse: { value: 1 } },
+    });
   }
 }
 
@@ -371,7 +376,7 @@ function gsapAnim() {
   });
 
   // zoom in
-  gsap.from('.eagle-img', {
+  gsap.from('.zoom-in', {
     scale: 0.9,
     ease: "expo.inOut",
     duration: 1.5,
