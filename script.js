@@ -412,3 +412,25 @@ function gsapAnim() {
   // text animation l-t-r
   // gsap.from()
 }
+
+function videoContainer(){
+  const aiDiv = document.querySelector('.video-cont .ai')
+  aiDiv.addEventListener('mouseenter',function(){
+    gsap.to('.video-cont video',{
+      opacity: 1,
+    })
+    gsap.to('.video-cont .ai',{
+      opacity: .5,
+    })
+  })
+  aiDiv.addEventListener('mouseleave',function(){
+    gsap.to('.video-cont video',{
+      opacity: 0,
+    })
+    gsap.to('.video-cont .ai',{
+      opacity: 1,
+    })
+  })
+}
+
+isMobileDevice() ? "" : videoContainer();
