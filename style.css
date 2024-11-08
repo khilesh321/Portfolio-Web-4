@@ -828,4 +828,8 @@ footer {
   .page2{
     font-size: 3em;
   }
+
+  .video-cont{
+    display: none;
+  }
 }
