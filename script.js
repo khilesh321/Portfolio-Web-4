@@ -1,17 +1,24 @@
 function lenisScroll() {
-  // Initialize Lenis
-  const lenis = new Lenis({
-    syncTouch: true,
-    // other configurations
-  });
-
-  // Use requestAnimationFrame to continuously update the scroll
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
+  // Function to detect if the user is on a mobile device
+  function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
   }
 
-  requestAnimationFrame(raf);
+  // Initialize Lenis only if the user is not on a mobile device
+  if (!isMobileDevice()) {
+    const lenis = new Lenis({
+      syncTouch: true,
+      // other configurations
+    });
+
+    // Use requestAnimationFrame to continuously update the scroll
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+  }
 }
 
 lenisScroll();
